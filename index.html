@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appuis aux Enfants</title>
+  <style>
+    :root {
+      --primary: #014A9D;
+      --accent: #014A9D;
+      --background: #ffffff;
+      --text: #0f172a;
+      --card: #f8fafc;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1.5rem 1.5rem;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      max-height: 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 100%;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px;
+      margin-right: 10px;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:last-child {
+      margin-right: 0;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5rem;
+    }
+
+    header p {
+      margin: 0.3rem 0 0;
+      font-size: 1.5rem;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      padding-left: 0.5rem;
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+      color: #014A9D;
+      text-align: center;
+    }
+
+    section:first-of-type h2 {
+      margin-top: 1rem;
+    }
+
+    .box-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .box {
+      background-color: var(--card);
+      padding: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .icon-placeholder {
+      width: 60px;
+      height: 60px;
+      background-color: #e2e8f0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .icon-image {
+  width: 60px;
+  height: 50px;
+  object-fit: contain; /* maintient les proportions de l'image */
+  border-radius: 30%; /* pour une image ronde comme le placeholder */
+  margin-bottom: 1rem;
+}
+    
+    .box-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    .box-content {
+      margin-top: 0.5rem;
+      flex-grow: 1;
+    }
+
+
+    .thematique-box {
+      text-align: center;
+    }
+
+    .images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+    .images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garde les proportions de l'image tout en remplissant l'espace */
+  aspect-ratio: 4/3; /* Maintient le même ratio que précédemment */
+  border-radius: 0.5rem; /* Ajoute des coins arrondis */
+}
+
+    .images div {
+      background-color: #e2e8f0;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-weight: bold;
+    }
+
+    .contact {
+      background-color: var(--card);
+      padding: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .contact-icons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info {
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      margin-top: 4rem;
+    }
+
+    /* Sur tous les écrans */
+    .centered-box {
+  text-align: center;
+}
+
+/* Sur les grands écrans */
+    @media (min-width: 700px) {
+      .centered-box {
+        grid-column: 1 / -1; /* Étend sur toutes les colonnes disponibles dans la grille */
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .top-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .nav-links {
+        width: auto;
+      }
+      
+      .nav-links a {
+        font-size: 1rem;
+        padding: 10px;
+      }
+    }
+
+    @media (min-width: 700px) {
+      .box-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      header h1 {
+        font-size: 4rem;
+      }
+      
+      header p {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="logo-container">
+        <img src="logo.jpg" alt="Logo Appuis aux Enfants">
+      </div>
+      <nav class="nav-links">
+        <a href="#missions">Missions</a>
+        <a href="#thematiques">Thématiques</a>
+        <a href="#actions">Actions</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="header-text">
+      <h1>Appuis aux Enfants</h1>
+      <p>Défendre le droit des enfants à grandir et s'épanouir dans des conditions dignes</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="missions">
+      <h2>Nos missions</h2>
+      <div class="box-list">
+        <div class="box">
+          <img src="conditionsDeVie.png" class="icon-image">
+          <div class="box-title">Conditions de vie</div>
+          <div class="box-content">Contribuer à l'amélioration des conditions de vie des enfants en situation de vulnérabilité.</div>
+        </div>
+        <div class="box">
+          <img src="Assistance.png" class="icon-image">
+          <div class="box-title">Assistance</div>
+          <div class="box-content">Porter assistance aux enfants victimes de maltraitance.</div>
+        </div>
+        <div class="box">
+          <img src="accompagnement.png" class="icon-image">
+          <div class="box-title">Accompagnement</div>
+          <div class="box-content">Accompagner les enfants dans leur développement physique, intellectuel, moral et social.</div>
+        </div>
+        <div class="box">
+          <img src="epanouissement.png" class="icon-image">
+          <div class="box-title">Épanouissement</div>
+          <div class="box-content">Garantir aux enfants un épanouissement dans des conditions dignes et respectueuses.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="thematiques">
+      <h2>Thématiques d'intervention</h2>
+      <div class="box-list">
+        <div class="box thematique-box">
+          <img src="identity.png" class="icon-image">
+          <div class="box-content"><strong>Droit à l'identité</strong></div>
+        </div>
+        <div class="box thematique-box">
+          <img src="education.png" class="icon-image">
+          <div class="box-content"><strong>Droit à l'éducation</strong></div>
+        </div>
+        <div class="box thematique-box">
+          <img src="health.png" class="icon-image">
+          <div class="box-content"><strong>Droit à la santé</strong></div>
+        </div>
+        <div class="box thematique-box">
+          <img src="protection.png" class="icon-image">
+          <div class="box-content"><strong>Droit à la protection</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="actions">
+      <h2>Nos actions</h2>
+      <div class="box-list">
+        <div class="box">
+          <img src="ecouter.png" class="icon-image">
+          <div class="box-title">Écouter</div>
+          <div class="box-content">Un service d'écoute pour tous ceux qui ressentent le besoin de parler, qui souffrent ou qui sont victimes de maltraitance et de violence.</div>
+        </div>
+        <div class="box">
+          <img src="present.png" class="icon-image">
+          <div class="box-title">Être présent</div>
+          <div class="box-content">Un accompagnement complet pour permettre aux enfants de se développer dignement, aussi bien intellectuellement que physiquement et socialement.</div>
+        </div>
+        <div class="box">
+          <img src="conseil.png" class="icon-image">
+          <div class="box-title">Conseiller</div>
+          <div class="box-content">Une aide concrète pour garantir l'accès aux droits fondamentaux tels que l'éducation, la santé, l'information, l'identité et la protection.</div>
+        </div>
+        <div class="box">
+          <img src="soutenir.png" class="icon-image">
+          <div class="box-title">Soutenir</div>
+          <div class="box-content">Un soutien et une orientation pour les enfants et leurs familles en cas de violence, en les guidant à chaque étape des démarches à entreprendre.</div>
+        </div>
+        <div class="box centered-box">
+          <img src="appui.png" class="icon-image">
+          <div class="box-title">Être un appui</div>
+          <div class="box-content">Un appui aux familles pour stabiliser le quotidien des enfants et offrir aux parents des formations favorisant la création d'activités génératrices de revenus.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galerie">
+      <h2>Nos actions en images</h2>
+      <div class="images">
+        <img src="photo1.jpeg">
+        <img src="photo2.jpeg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contactez-nous</h2>
+      <div class="contact">
+          <img src="email.png" class="icon-image">
+          <p>Email : appuis.auxenfants@gmail.com</p>
+          <img src="phone.png" class="icon-image">
+          <p>Téléphone : 00 261 34 70 145 34 / 00 261 37 76 801 19</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Appuis aux Enfants
+  </footer>
+</body>
+</html>
